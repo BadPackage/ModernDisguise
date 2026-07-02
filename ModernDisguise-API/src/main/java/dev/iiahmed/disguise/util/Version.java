@@ -67,6 +67,12 @@ public final class Version {
     }
 
     private static String findVersion() {
+        // Year-based Minecraft versioning (26.x). Match on the parsed MAJOR/MINOR ints rather than the
+        // exact version string: Bukkit.getBukkitVersion() carries build metadata (e.g. "26.1.2.build.70")
+        // so VERSION_EXACT won't equal a clean "26.1.2". Modern Paper here is Mojang-mapped.
+        if (MAJOR == 26 && MINOR == 1) {
+            return "26_1_R1";
+        }
         if (IS_PAPER && (MAJOR > 1 || MINOR >= 20)) {
             switch (VERSION_EXACT) {
                 case "1.20":

@@ -100,6 +100,10 @@ public final class DisguiseManager {
             case "1_21_R7":
                 PROVIDER = Version.IS_PAPER ? new PVS1_21_R7() : new SVS1_21_R7();
                 break;
+            case "26_1_R1":
+                // Paper / Mojang-mapped only (MC 26.x ships no Spigot-mapped variant).
+                PROVIDER = new PVS26_1_R1();
+                break;
             case "UNKNOWN":
             default:
                 PROVIDER = new VS_Unavailable();

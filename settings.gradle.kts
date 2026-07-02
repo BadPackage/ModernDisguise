@@ -34,6 +34,7 @@ val minecraftVersions = listOf(
         "1_21_R5",
         "1_21_R6",
         "1_21_R7",
+        "26_1_R1",
         "fallback"
 )
 
@@ -47,6 +48,10 @@ pluginManagement {
                 gradlePluginPortal()
                 maven {
                     url = uri("https://repo.gravemc.net/releases/")
+                }
+                // Paper repo for the paperweight-userdev plugin used by the 26_1_R1 module
+                maven {
+                    url = uri("https://repo.papermc.io/repository/maven-public/")
                 }
         }
 }

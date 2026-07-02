@@ -45,7 +45,10 @@ public class DefaultEntityProvider implements EntityProvider {
             supported = true;
         } catch (final Throwable exception) {
             supported = false;
-            Bukkit.getServer().getLogger().log(Level.SEVERE, "Failed to load ModernDisguise's secondary features (disguising as entities)", exception);
+            // Entity disguises rely on Spigot-mapped NMS names and are unavailable on Mojang-mapped
+            // servers (e.g. modern Paper / MC 26.x). This is an optional secondary feature; player
+            // disguises are unaffected, so log quietly instead of alarming with SEVERE.
+            Bukkit.getServer().getLogger().log(Level.FINE, "ModernDisguise entity disguises unavailable on this server mapping (player disguises still work)");
         }
 
         SUPPORTED = supported;
